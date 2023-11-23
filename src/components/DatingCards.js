@@ -1,29 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatingCard from 'react-tinder-card';
 import './DatingCards.css';
+import axios from './axios';
+
 const DatingCards = () => {
-  const [people, setPeople] = useState([
-    {
-      name: 'Random Guy',
-      imgUrl:
-        'https://s2.glbimg.com/jsaPuF7nO23vRxQkuJ_V3WgouKA=/e.glbimg.com/og/ed/f/original/2014/06/10/461777879.jpg',
-    },
-    {
-      name: 'Another Guy',
-      imgUrl:
-        'https://i0.wp.com/engenharia360.com/wp-content/uploads/2019/05/esta-pessoa-nao-existe-engenharia360-4.png?w=791&ssl=1',
-    },
-    {
-      name: 'Random Girl',
-      imgUrl:
-        'https://www.freepik.com/premium-photo/ai-generated-hyperrealistic-3d-illustration-portrait-black-female-model-earrings-necklace-with-afro-braids-against-brown-background-looking-camera_37999943.htm',
-    },
-    {
-      name: 'Another Girl',
-      imgUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/f/f3/Jean_Shrimpton_%281965%29_2.jpg',
-    },
-  ]);
+  const [people, setPeople] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      const req = await axios.get('/dating/cards');
+      setPeople(req.data);
+    }
+    fetchData();
+  }, []);
+
   const swiped = (direction, nameToDelete) => {
     console.log('receiving ' + nameToDelete);
   };
