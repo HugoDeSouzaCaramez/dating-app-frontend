@@ -1,5 +1,6 @@
 {
   "proxy":"https://dating-app-mern-hugo.web.app/",
+  "homepage": ".",
   "name": "dating-app-frontend",
   "version": "0.1.0",
   "private": true,
