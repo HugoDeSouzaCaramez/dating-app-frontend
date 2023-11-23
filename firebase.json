@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "public": "build",
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "https://mynewurl.now.sh/",
+        "type": 301
+      }
+    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
